@@ -1,0 +1,10 @@
+id: dev.apidash.App
+runtime: org.freedesktop.Platform
+runtime-version: "23.08"
+sdk: org.freedesktop.Sdk
+command: apidash
+modules:
+  - name: apidash
+    buildsystem: simple
+    build-commands:
+      - flutter build linux
