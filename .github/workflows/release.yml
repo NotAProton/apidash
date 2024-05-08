@@ -7,8 +7,8 @@ on:
         description: "Draft release"
         required: true
         type: boolean
-      version:
-        description: "Desired version number"
+      tag:
+        description: "The git tag you want to create a release for"
         required: true
         type: string
       release-notes:
@@ -49,13 +49,14 @@ jobs:
           flutter build linux --release -v
 
       - name: Tar bundle
-        run: tar -czvf build/linuxAmd64-${{ github.event.inputs.version }}.tar.gz build/linux/x64/release/bundle
+        run: tar -czvf build/linuxAmd64-${{ github.event.inputs.tag }}.tar.gz build/linux/x64/release/bundle
 
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
-          files: build/linuxAmd64-${{ github.event.inputs.version }}.tar.gz
+          tag_name: ${{ github.event.inputs.tag }}
+          files: build/linuxAmd64-${{ github.event.inputs.tag }}.tar.gz
           fail_on_unmatched_files: true
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: ${{ github.event.inputs.version }}
+          name: "${{ github.event.inputs.tag }} tarball for Linux x64"
           body: "${{ github.event.inputs.release-notes }}"
