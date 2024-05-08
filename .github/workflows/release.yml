@@ -43,7 +43,7 @@ jobs:
         run: flutter doctor -v
 
       - name: Flutter build
-        run: flutter build linux --release -v
+        run: flutter build linux --release -v -d
 
       - name: Tar bundle
         run: tar -czvf build/linuxAmd64-$(echo ${{ github.event.inputs.version }}).tar.gz build/linux/release/bundle
