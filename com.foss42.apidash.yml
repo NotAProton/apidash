@@ -1,4 +1,4 @@
-id: dev.apidash.App
+id: com.foss42.apidash
 runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
@@ -6,5 +6,7 @@ command: apidash
 modules:
   - name: apidash
     buildsystem: simple
+    sources:
+      - type: archive
     build-commands:
       - flutter build linux
