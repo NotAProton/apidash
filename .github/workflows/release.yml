@@ -50,13 +50,13 @@ jobs:
           flutter build linux --release -v
 
       - name: Tar bundle
-        run: tar -czvf build/linux_amd64-${{ github.event.inputs.tag }}.tar.gz -C build/linux/x64/release/bundle .
+        run: tar -czvf build/APIDash_linux_amd64-${{ github.event.inputs.tag }}.tar.gz -C build/linux/x64/release/bundle .
 
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.inputs.tag }}
-          files: build/linuxAmd64-${{ github.event.inputs.tag }}.tar.gz
+          files: build/APIDash_linux_amd64-${{ github.event.inputs.tag }}.tar.gz
           fail_on_unmatched_files: true
           token: ${{ secrets.GITHUB_TOKEN }}
           name: "${{ github.event.inputs.tag }} tarball for Linux x64"
