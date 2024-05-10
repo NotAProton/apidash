@@ -57,3 +57,6 @@ coverage/*
 installers/*
 .metadata
 .fvm/
+# Flatpak temporary files
+.flatpak-builder/
+repo/

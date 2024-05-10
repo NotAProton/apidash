@@ -3,10 +3,21 @@ runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
 command: apidash
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --share=network
+  - --filesystem=home
 modules:
   - name: apidash
     buildsystem: simple
     sources:
       - type: archive
+        url: https://github.com/NotAProton/apidash/releases/download/0.0.1.1/linuxAmd64-0.0.1.1.tar.gz
+        sha256: 7d5aa95a9c32d5bf1d234f3b70df9f90acb0442a657e439852fccc69f11afa1d
     build-commands:
-      - flutter build linux
+      - cp -r . /app/
+      - chmod +x /app/apidash
+      - mkdir -p /app/bin
+      - ln -s /app/apidash /app/bin/apidash

@@ -49,7 +49,7 @@ jobs:
           flutter build linux --release -v
 
       - name: Tar bundle
-        run: tar -czvf build/linuxAmd64-${{ github.event.inputs.tag }}.tar.gz build/linux/x64/release/bundle
+        run: tar -czvf build/linux_amd64-${{ github.event.inputs.tag }}.tar.gz -C build/linux/x64/release/bundle .
 
       - name: Create release
         uses: softprops/action-gh-release@v2
